@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raz Muhammad | Portfolio</title>
+    <meta name="description" content="Raz Muhammad's personal portfolio showcasing projects and skills in Data Science, Machine Learning, and Generative AI.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for better aesthetics with gray theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f3f4f6; /* gray-100 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db; /* gray-300 */
+            border-radius: 10px;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937; /* gray-800 */
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4b5563; /* gray-600 */
+        }
+        /* A simple fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Raz Muhammad</a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#about" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">About</a>
+                <a href="#projects" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Projects</a>
+                <a href="#skills" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Skills</a>
+                <a href="#contact" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <!-- Social Links -->
+                <a href="https://github.com/razmuhammad" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/raz-muhammad-4351a8220" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">
+                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">
+                    <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-6 text-sm hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
+            <a href="#projects" class="block py-2 px-6 text-sm hover:bg-gray-100 dark:hover:bg-gray-800">Projects</a>
+            <a href="#skills" class="block py-2 px-6 text-sm hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a>
+            <a href="#contact" class="block py-2 px-6 text-sm hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24 md:pt-32">
+        <!-- Hero Section -->
+        <section id="hero" class="flex flex-col md:flex-row items-center justify-between gap-12 min-h-[70vh]">
+            <div class="md:w-3/5 text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tighter text-gray-900 dark:text-white mb-4">Hi, I'm Raz Muhammad</h1>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto md:mx-0">A final year Computer Science student passionate about Machine Learning, Deep Learning, and the new frontier of Generative AI. I love building intelligent applications that solve real-world problems.</p>
+                <a href="#projects" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    View My Work
+                </a>
+            </div>
+            <div class="md:w-2/5 flex justify-center">
+                <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden bg-gradient-to-br from-sky-400 to-blue-500 shadow-2xl flex items-center justify-center">
+                     <img src="my DP.jpg" alt="Raz Muhammad" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-32">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">About Me</h2>
+                <p class="text-gray-500 dark:text-gray-400 mt-2">A brief introduction to my journey and interests.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <img src="developer.webp" alt="About Raz Muhammad" class="rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-lg mb-4 text-gray-600 dark:text-gray-300">
+                        I am a Computer Science graduate from the University of Agriculture Peshawar. My academic journey has ignited a deep passion for artificial intelligence, leading me to specialize in Machine Learning and Deep Learning. I have dedicated myself to mastering technologies like PyTorch, TensorFlow, and Scikit-Learn, and have a proven track record of developing complex models from the ground up.
+                    </p>
+                    <p class="text-lg mb-4 text-gray-600 dark:text-gray-300">
+                        My curiosity extends to the cutting edge of AI, with a strong focus on Generative AI and Large Language Models (LLMs). I have hands-on experience fine-tuning models like Llama-2 and building applications using Hugging Face, LangChain, and various APIs. From creating voice-to-voice chatbots to developing RAG systems for document interaction, I am driven by the challenge of creating practical and innovative AI solutions.
+                    </p>
+                     <a href="RazM CV.pdf" download class="inline-block mt-4 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-semibold py-2 px-6 rounded-lg transition-colors">
+                        Download My CV
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold">Projects</h2>
+                <p class="text-gray-500 dark:text-gray-400 mt-2">A selection of my work in AI and software development.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card Template -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/38BDF8/FFFFFF?text=GenAI" alt="Project Thumbnail" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">LLM Fine-tuning Project</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Fine-tuned Llama-2-7b using PEFT with LoRA and 4-bit quantization to optimize training efficiency.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-sky-900 dark:text-sky-300">PEFT</span>
+                            <span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-sky-900 dark:text-sky-300">LoRA</span>
+                            <span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-sky-900 dark:text-sky-300">Llama-2</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/F472B6/FFFFFF?text=RAG" alt="Project Thumbnail" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Chat with LLM for Documents</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Built a RAG system allowing users to upload PDFs and interact with the content via a chatbot.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-pink-100 text-pink-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">RAG</span>
+                            <span class="bg-pink-100 text-pink-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">LangChain</span>
+                             <span class="bg-pink-100 text-pink-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">PDF</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/34D399/FFFFFF?text=AI+Voice" alt="Project Thumbnail" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Voice-to-Voice AI Chatbot</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Real-time voice chatbot using Whisper for STT and an LLM, with TTS for seamless voice interaction.</p>
+                        <div class="flex flex-wrap gap-2">
+                             <span class="bg-emerald-100 text-emerald-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-emerald-900 dark:text-emerald-300">Whisper</span>
+                             <span class="bg-emerald-100 text-emerald-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-emerald-900 dark:text-emerald-300">LLM</span>
+                             <span class="bg-emerald-100 text-emerald-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-emerald-900 dark:text-emerald-300">TTS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/FBBF24/FFFFFF?text=Deep+Learning" alt="Project Thumbnail" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Sentiment Classifier</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">DL-based sentiment analysis system using PyTorch, with pre-trained Word2Vec embeddings.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-amber-900 dark:text-amber-300">PyTorch</span>
+                             <span class="bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-amber-900 dark:text-amber-300">CNN</span>
+                             <span class="bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-amber-900 dark:text-amber-300">RNN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/A78BFA/FFFFFF?text=Computer+Vision" alt="Project Thumbnail" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Face Recognition System</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Facial recognition leveraging the FaceNet architecture and triplet loss for one-shot learning.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-violet-100 text-violet-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-violet-900 dark:text-violet-300">FaceNet</span>
+                            <span class="bg-violet-100 text-violet-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-violet-900 dark:text-violet-300">Triplet Loss</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/F472B6/FFFFFF?text=CV" alt="Project Thumbnail" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">YOLO Object Detection</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Real-time vehicle detection system using YOLO in TensorFlow, with custom non-max suppression.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-rose-100 text-rose-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-rose-900 dark:text-rose-300">YOLO</span>
+                            <span class="bg-rose-100 text-rose-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-rose-900 dark:text-rose-300">TensorFlow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-12">
+                <a href="https://github.com/razmuhammad" target="_blank" rel="noopener noreferrer" class="text-sky-500 dark:text-sky-400 font-semibold hover:underline">
+                    View All Projects on GitHub &rarr;
+                </a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold">My Skills</h2>
+                <p class="text-gray-500 dark:text-gray-400 mt-2">Technologies and tools I work with.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
+                <!-- Skill items -->
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">Python</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">C++</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">JavaScript</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">SQL</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">PyTorch</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">TensorFlow</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">Scikit-Learn</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">Hugging Face</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">LangChain</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">Pandas</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">NumPy</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">Flask</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">Streamlit</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">HTML & CSS</span></div>
+                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1"><span class="font-semibold">Power BI</span></div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
+                I'm currently seeking new opportunities and am open to collaborations. Feel free to reach out if you have a project in mind or just want to connect!
+            </p>
+            <a href="mailto:raz.muhammad.990@gmail.com" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+                Say Hello
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-sm">
+            <p class="text-gray-500 dark:text-gray-400 mb-4 md:mb-0">&copy; 2025 Raz Muhammad. All rights reserved.</p>
+            <div class="flex items-center space-x-4">
+                 <a href="https://github.com/razmuhammad" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">GitHub</a>
+                 <a href="https://www.linkedin.com/in/raz-muhammad-4351a8220" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // --- Dark Mode Toggle ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check for saved theme in localStorage
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            // toggle icons inside button
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // if set via local storage previously
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            // if NOT set via local storage previously
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+        
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // --- Intersection Observer for animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0'; // Start with opacity 0 for the animation
+            observer.observe(section);
+        });
+
+    </script>
+
+</body>
+</html>
